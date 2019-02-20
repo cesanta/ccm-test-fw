@@ -1,0 +1,38 @@
+// Copyright (c) 2019 Cesanta Software Limited
+// All rights reserved
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+#ifdef STM32F072xB
+#include "stm32f0xx_hal.h"
+#define HAL_GetTickFreq() 1
+#endif
+#ifdef STM32F303x8
+#include "stm32f3xx_hal.h"
+#endif
+#ifdef STM32F401xE
+#include "stm32f4xx_hal.h"
+#endif
+
+void app_init(
+    UART_HandleTypeDef *huart, const char *app_name, const char *app_version,
+    GPIO_TypeDef *led1_port, uint16_t led1_pin, GPIO_TypeDef *led2_port, uint16_t led2_pin,
+    const char * mqtt_topic);
+
+void app_run(void);
